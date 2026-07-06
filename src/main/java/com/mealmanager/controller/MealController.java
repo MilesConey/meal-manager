@@ -5,6 +5,7 @@ import com.mealmanager.service.MealService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/meals")
@@ -24,6 +25,11 @@ public class MealController {
 
     @PostMapping
     public Meal createMeal(@RequestBody Meal meal){
+
         return mealService.saveMeal(meal);
+    }
+    @GetMapping("/{id}")
+    public Meal getMealById(@PathVariable Long id){
+        return mealService.getMealById(id);
     }
 }

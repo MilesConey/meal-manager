@@ -3,10 +3,13 @@ package com.mealmanager.service;
 import com.mealmanager.entity.Meal;
 import com.mealmanager.repository.MealRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Service // tells Spring to recognize the class as a Service
@@ -29,4 +32,12 @@ public class MealService {
         return mealRepository.save(meal);
     }
 
+    public Meal getMealById(Long id){
+        Optional<Meal> meal = mealRepository.findById(id);
+
+        if (meal.isPresent()){
+            return meal.get();
+        }
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Meal not found");
+    }
 }
