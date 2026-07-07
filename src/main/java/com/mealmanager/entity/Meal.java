@@ -4,6 +4,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.PositiveOrZero;
 
 import java.io.ObjectInputStream;
 
@@ -14,12 +16,13 @@ public class Meal {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) //@GeneratedValue(strategy = GenerationType.IDENTITY) tells JPA to use the database's auto-increment/identity mechanism to generate primary key values automatically.
     private Long id; // Using Long object type instead of long primitive to allow for null values;
+    @NotBlank
     private String name;
 
     private String description;
 
     private String category;
-
+    @PositiveOrZero
     private Integer calories;
 
     public Meal(){

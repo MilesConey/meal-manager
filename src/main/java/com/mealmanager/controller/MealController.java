@@ -2,6 +2,7 @@ package com.mealmanager.controller;
 
 import com.mealmanager.entity.Meal;
 import com.mealmanager.service.MealService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,7 +24,7 @@ public class MealController {
     }
 
     @PostMapping
-    public Meal createMeal(@RequestBody Meal meal){
+    public Meal createMeal(@Valid @RequestBody Meal meal){
 
         return mealService.saveMeal(meal);
     }
@@ -32,7 +33,7 @@ public class MealController {
         return mealService.getMealById(id);
     }
     @PutMapping("/{id}")
-    public Meal updateMeal(@PathVariable Long id, @RequestBody Meal updatedMeal) {
+    public Meal updateMeal(@PathVariable Long id, @Valid @RequestBody Meal updatedMeal) {
         return mealService.updateMeal(id, updatedMeal);
     }
     @DeleteMapping("/{id}")
