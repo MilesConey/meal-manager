@@ -35,4 +35,8 @@ public class MealController {
     public Meal updateMeal(@PathVariable Long id, @RequestBody Meal updatedMeal) {
         return mealService.updateMeal(id, updatedMeal);
     }
+    @DeleteMapping("/{id}")
+    public void deleteMeal(@PathVariable Long id){
+        mealService.deleteMeal(id);
+    }
 }

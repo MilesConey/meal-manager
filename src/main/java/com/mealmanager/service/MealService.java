@@ -49,4 +49,8 @@ public class MealService {
         existingMeal.setDescription(updatedMeal.getDescription());
         return mealRepository.save(existingMeal);
     }
+    public void deleteMeal(Long id){
+        Meal existingMeal = getMealById(id);
+        mealRepository.delete(existingMeal);
+    }
 }
