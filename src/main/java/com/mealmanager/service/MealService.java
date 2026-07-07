@@ -40,4 +40,13 @@ public class MealService {
         }
         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Meal not found");
     }
+
+    public Meal updateMeal(Long id, Meal updatedMeal){
+        Meal existingMeal = getMealById(id);
+        existingMeal.setName(updatedMeal.getName());
+        existingMeal.setCalories(updatedMeal.getCalories());
+        existingMeal.setCategory(updatedMeal.getCategory());
+        existingMeal.setDescription(updatedMeal.getDescription());
+        return mealRepository.save(existingMeal);
+    }
 }
