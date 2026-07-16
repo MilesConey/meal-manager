@@ -5,7 +5,6 @@ import com.mealmanager.repository.MealRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
@@ -53,4 +52,11 @@ public class MealService {
         Meal existingMeal = getMealById(id);
         mealRepository.delete(existingMeal);
     }
+    public List<Meal> getMealsByCategory(String category){
+        return mealRepository.findByCategory(category);
+    }
+    public List<Meal> getMealsByNameSearch(String name){
+        return mealRepository.findByNameContainingIgnoreCase(name);
+    }
+
 }
