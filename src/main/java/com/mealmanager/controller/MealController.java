@@ -18,9 +18,14 @@ public class MealController {
         this.mealService = mealService;
     }
     @GetMapping
-    public List<Meal> getAllMeals(){
-
-        return mealService.getAllMeals();
+    public List<Meal> getMeals(@RequestParam(required = false) String category,
+                               @RequestParam(required = false) String name){
+        if (category != null){
+            return mealService.getMealsByCategory(category);}
+        else if (name != null) {
+            return mealService.getMealsByNameSearch(name);}
+        else {
+        return mealService.getAllMeals();}
     }
 
     @PostMapping
