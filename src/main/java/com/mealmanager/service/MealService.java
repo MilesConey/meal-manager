@@ -11,11 +11,11 @@ import java.util.List;
 import java.util.Optional;
 
 
-@Service // tells Spring to recognize the class as a Service
+@Service
 public class MealService {
     private MealRepository mealRepository;
 
-    @Autowired // @Autowired tells Spring to satisfy the constructor's dependencies by providing the required objects when creating MealService.
+    @Autowired
     public MealService (MealRepository mealRepository) {
 
         this.mealRepository = mealRepository;
