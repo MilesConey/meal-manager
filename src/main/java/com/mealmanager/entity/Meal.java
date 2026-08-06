@@ -8,18 +8,18 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.PositiveOrZero;
 
 @Entity
-
 public class Meal {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @NotBlank
     private String name;
 
     private String description;
 
     private String category;
+
     @PositiveOrZero
     private Integer calories;
 
