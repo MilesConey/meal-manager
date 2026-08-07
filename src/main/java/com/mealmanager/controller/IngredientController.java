@@ -19,9 +19,11 @@ public class IngredientController {
     }
 
     @GetMapping
-    public List<Ingredient> getAllIngredients(){
-
-        return ingredientService.getAllIngredients();
+    public List<Ingredient> getIngredients(@RequestParam(required = false) String name){
+        if (name!= null){
+            return ingredientService.getIngredientsByNameSearch(name);}
+        else
+            return ingredientService.getAllIngredients();
     }
 
     @PostMapping

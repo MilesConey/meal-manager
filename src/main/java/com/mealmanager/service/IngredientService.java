@@ -43,4 +43,7 @@ public class IngredientService {
         Ingredient existingIngredient = getIngredientById(id);
         ingredientRepository.delete(existingIngredient);
     }
+    public List<Ingredient> getIngredientsByNameSearch(String name){
+        return ingredientRepository.findIngredientByNameContainingIgnoreCase(name);
+    }
 }
