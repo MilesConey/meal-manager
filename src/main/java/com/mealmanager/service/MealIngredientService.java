@@ -39,11 +39,7 @@ public class MealIngredientService {
         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Meal Ingredient not found");
     }
     public MealIngredient saveMealIngredient(MealIngredient mealIngredient){
-       //get meal id from mealIngredient request
-        //use meal id to get meal from repository
-        // add meal to mealIngredient object
-        //get ingredient id from meal Ingredient request
-        //use ingredient id to get meal from repository
+
        Meal meal = mealIngredient.getMeal();
        Long mealId = meal.getId();
        Optional<Meal> newMeal = mealRepository.findById(mealId);
