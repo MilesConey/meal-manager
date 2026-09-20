@@ -23,44 +23,49 @@ public class Meal {
     @PositiveOrZero
     private Integer calories;
 
-    public Meal(){
+    public Meal() {
     }
 
-    public Meal(String name,String description, String category, Integer calories ){
+    public Meal(String name, String description, String category, Integer calories) {
         this.name = name;
         this.description = description;
         this.category = category;
         this.calories = calories;
     }
-    public Long getId(){
+
+    public Long getId() {
         return id;
     }
 
-    public String getName(){
+    public String getName() {
         return name;
     }
-    public void setName(String name){
-        this.name = name;
-    };
 
-    public String getDescription(){
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
         return description;
     }
-    public void setDescription(String description){
+
+    public void setDescription(String description) {
         this.description = description;
     }
 
-    public String getCategory(){
+    public String getCategory() {
         return category;
     }
-    public void setCategory(String category){
+
+    public void setCategory(String category) {
         this.category = category;
     }
 
-    public Integer getCalories(){
+    public Integer getCalories() {
         return calories;
     }
-    public void setCalories(Integer calories){
+
+    public void setCalories(Integer calories) {
         this.calories = calories;
     }
 

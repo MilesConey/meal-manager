@@ -15,35 +15,41 @@ public class IngredientService {
     private final IngredientRepository ingredientRepository;
 
     @Autowired
-    public  IngredientService (IngredientRepository ingredientRepository){
+    public IngredientService(IngredientRepository ingredientRepository) {
         this.ingredientRepository = ingredientRepository;
     }
-    public List<Ingredient> getAllIngredients(){
+
+    public List<Ingredient> getAllIngredients() {
         return ingredientRepository.findAll();
     }
-    public  Ingredient saveIngredient(Ingredient ingredient){
+
+    public Ingredient saveIngredient(Ingredient ingredient) {
         return ingredientRepository.save(ingredient);
     }
-    public Ingredient getIngredientById(Long id){
+
+    public Ingredient getIngredientById(Long id) {
         Optional<Ingredient> ingredient = ingredientRepository.findById(id);
 
-        if (ingredient.isPresent()){
+        if (ingredient.isPresent()) {
             return ingredient.get();
         }
         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Ingredient not found");
     }
-    public Ingredient updateIngredient(Long id, Ingredient updatedIngredient){
+
+    public Ingredient updateIngredient(Long id, Ingredient updatedIngredient) {
         Ingredient existingIngredient = getIngredientById(id);
         existingIngredient.setName(updatedIngredient.getName());
         existingIngredient.setQuantity(updatedIngredient.getQuantity());
         existingIngredient.setUnit(updatedIngredient.getUnit());
         return ingredientRepository.save(existingIngredient);
     }
-    public void deleteIngredient(Long id){
+
+    public void deleteIngredient(Long id) {
         Ingredient existingIngredient = getIngredientById(id);
         ingredientRepository.delete(existingIngredient);
     }
-    public List<Ingredient> getIngredientsByNameSearch(String name){
+
+    public List<Ingredient> getIngredientsByNameSearch(String name) {
         return ingredientRepository.findIngredientByNameContainingIgnoreCase(name);
     }
 }
