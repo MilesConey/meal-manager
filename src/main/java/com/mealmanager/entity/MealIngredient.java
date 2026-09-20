@@ -18,42 +18,50 @@ public class MealIngredient {
     @NotBlank
     private String unit;
 
-    public MealIngredient(){
+    public MealIngredient() {
 
     }
 
-    public MealIngredient(Meal meal, Ingredient ingredient, Double quantity, String unit){
+    public MealIngredient(Meal meal, Ingredient ingredient, Double quantity, String unit) {
         this.meal = meal;
         this.ingredient = ingredient;
         this.quantity = quantity;
         this.unit = unit;
     }
-    public Long getId(){
+
+    public Long getId() {
         return id;
     }
+
     public Meal getMeal() {
         return meal;
     }
-    public Ingredient getIngredient(){
+
+    public Ingredient getIngredient() {
         return ingredient;
     }
-    public void setIngredient(Ingredient ingredient){
+
+    public void setIngredient(Ingredient ingredient) {
         this.ingredient = ingredient;
     }
 
-    public void setMeal(Meal meal){
+    public void setMeal(Meal meal) {
         this.meal = meal;
     }
+
     public Double getQuantity() {
         return quantity;
     }
-    public void setQuantity(Double quantity){
+
+    public void setQuantity(Double quantity) {
         this.quantity = quantity;
     }
-    public String getUnit (){
+
+    public String getUnit() {
         return unit;
     }
-    public void setUnit (String unit){
+
+    public void setUnit(String unit) {
         this.unit = unit;
     }
 }

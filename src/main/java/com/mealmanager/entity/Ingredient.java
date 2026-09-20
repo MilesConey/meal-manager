@@ -10,11 +10,11 @@ import jakarta.validation.constraints.PositiveOrZero;
 
 @Entity
 public class Ingredient {
-   @Id
-   @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-   @NotBlank
+    @NotBlank
     private String name;
 
     @PositiveOrZero
@@ -23,34 +23,41 @@ public class Ingredient {
     @NotBlank
     private String unit;
 
-    public Ingredient(){
+    public Ingredient() {
 
     }
 
-    public Ingredient(String name, Double quantity, String unit){
+    public Ingredient(String name, Double quantity, String unit) {
         this.name = name;
         this.quantity = quantity;
         this.unit = unit;
     }
-    public Long getId(){
+
+    public Long getId() {
         return this.id;
     }
-    public String getName (){
+
+    public String getName() {
         return name;
     }
-    public void setName(String name){
+
+    public void setName(String name) {
         this.name = name;
     }
-    public Double getQuantity(){
+
+    public Double getQuantity() {
         return quantity;
     }
-    public void setQuantity(Double quantity){
+
+    public void setQuantity(Double quantity) {
         this.quantity = quantity;
     }
-    public String getUnit(){
+
+    public String getUnit() {
         return unit;
     }
-    public void setUnit(String unit){
+
+    public void setUnit(String unit) {
         this.unit = unit;
     }
 }

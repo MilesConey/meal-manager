@@ -13,39 +13,39 @@ public class IngredientController {
 
     private final IngredientService ingredientService;
 
-    public IngredientController(IngredientService ingredientService){
+    public IngredientController(IngredientService ingredientService) {
 
         this.ingredientService = ingredientService;
     }
 
     @GetMapping
-    public List<Ingredient> getIngredients(@RequestParam(required = false) String name){
-        if (name!= null){
-            return ingredientService.getIngredientsByNameSearch(name);}
-        else
+    public List<Ingredient> getIngredients(@RequestParam(required = false) String name) {
+        if (name != null) {
+            return ingredientService.getIngredientsByNameSearch(name);
+        } else
             return ingredientService.getAllIngredients();
     }
 
     @PostMapping
-    public Ingredient createIngredient(@Valid @RequestBody Ingredient ingredient){
+    public Ingredient createIngredient(@Valid @RequestBody Ingredient ingredient) {
 
         return ingredientService.saveIngredient(ingredient);
     }
 
     @GetMapping("/{id}")
-    public Ingredient getIngredientById(@PathVariable Long id){
+    public Ingredient getIngredientById(@PathVariable Long id) {
 
         return ingredientService.getIngredientById(id);
     }
 
     @PutMapping("/{id}")
-    public Ingredient updateIngredient(@PathVariable Long id, @Valid @RequestBody Ingredient updatedIngredient){
+    public Ingredient updateIngredient(@PathVariable Long id, @Valid @RequestBody Ingredient updatedIngredient) {
 
         return ingredientService.updateIngredient(id, updatedIngredient);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteIngredient(@PathVariable Long id){
+    public void deleteIngredient(@PathVariable Long id) {
 
         ingredientService.deleteIngredient(id);
     }

@@ -13,36 +13,41 @@ public class MealController {
 
     private final MealService mealService;
 
-    public MealController(MealService mealService){
+    public MealController(MealService mealService) {
 
         this.mealService = mealService;
     }
+
     @GetMapping
     public List<Meal> getMeals(@RequestParam(required = false) String category,
-                               @RequestParam(required = false) String name){
-        if (category != null){
-            return mealService.getMealsByCategory(category);}
-        else if (name != null) {
-            return mealService.getMealsByNameSearch(name);}
-        else {
-        return mealService.getAllMeals();}
+                               @RequestParam(required = false) String name) {
+        if (category != null) {
+            return mealService.getMealsByCategory(category);
+        } else if (name != null) {
+            return mealService.getMealsByNameSearch(name);
+        } else {
+            return mealService.getAllMeals();
+        }
     }
 
     @PostMapping
-    public Meal createMeal(@Valid @RequestBody Meal meal){
+    public Meal createMeal(@Valid @RequestBody Meal meal) {
 
         return mealService.saveMeal(meal);
     }
+
     @GetMapping("/{id}")
-    public Meal getMealById(@PathVariable Long id){
+    public Meal getMealById(@PathVariable Long id) {
         return mealService.getMealById(id);
     }
+
     @PutMapping("/{id}")
     public Meal updateMealById(@PathVariable Long id, @Valid @RequestBody Meal updatedMeal) {
         return mealService.updateMeal(id, updatedMeal);
     }
+
     @DeleteMapping("/{id}")
-    public void deleteMealById(@PathVariable Long id){
+    public void deleteMealById(@PathVariable Long id) {
 
         mealService.deleteMeal(id);
     }

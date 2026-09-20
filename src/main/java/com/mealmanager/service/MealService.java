@@ -16,31 +16,31 @@ public class MealService {
     private final MealRepository mealRepository;
 
     @Autowired
-    public MealService (MealRepository mealRepository) {
+    public MealService(MealRepository mealRepository) {
 
         this.mealRepository = mealRepository;
     }
 
-    public List<Meal> getAllMeals(){
+    public List<Meal> getAllMeals() {
 
         return mealRepository.findAll();
     }
 
-    public Meal saveMeal(Meal meal){
+    public Meal saveMeal(Meal meal) {
 
         return mealRepository.save(meal);
     }
 
-    public Meal getMealById(Long id){
+    public Meal getMealById(Long id) {
         Optional<Meal> meal = mealRepository.findById(id);
 
-        if (meal.isPresent()){
+        if (meal.isPresent()) {
             return meal.get();
         }
         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Meal not found");
     }
 
-    public Meal updateMeal(Long id, Meal updatedMeal){
+    public Meal updateMeal(Long id, Meal updatedMeal) {
         Meal existingMeal = getMealById(id);
         existingMeal.setName(updatedMeal.getName());
         existingMeal.setCalories(updatedMeal.getCalories());
@@ -48,14 +48,17 @@ public class MealService {
         existingMeal.setDescription(updatedMeal.getDescription());
         return mealRepository.save(existingMeal);
     }
-    public void deleteMeal(Long id){
+
+    public void deleteMeal(Long id) {
         Meal existingMeal = getMealById(id);
         mealRepository.delete(existingMeal);
     }
-    public List<Meal> getMealsByCategory(String category){
+
+    public List<Meal> getMealsByCategory(String category) {
         return mealRepository.findByCategory(category);
     }
-    public List<Meal> getMealsByNameSearch(String name){
+
+    public List<Meal> getMealsByNameSearch(String name) {
         return mealRepository.findByNameContainingIgnoreCase(name);
     }
 
