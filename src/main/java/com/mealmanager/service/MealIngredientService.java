@@ -44,18 +44,18 @@ public class MealIngredientService {
 
     public MealIngredient saveMealIngredient(MealIngredient mealIngredient) {
 
-        Meal meal = mealIngredient.getMeal();
-        Long mealId = meal.getId();
-        Optional<Meal> newMeal = mealRepository.findById(mealId);
-        if (newMeal.isPresent()) {
-            mealIngredient.setMeal(newMeal.get());
+        Meal requestedMeal = mealIngredient.getMeal();
+        Long requestedMealId = requestedMeal.getId();
+        Optional<Meal> existingMeal = mealRepository.findById(requestedMealId);
+        if (existingMeal.isPresent()) {
+            mealIngredient.setMeal(existingMeal.get());
         } else throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Meal not found");
-        Ingredient ingredient = mealIngredient.getIngredient();
-        Long ingredientId = ingredient.getId();
-        Optional<Ingredient> databaseIngredient = ingredientRepository.findById(ingredientId);
-        if (databaseIngredient.isPresent()) {
-            mealIngredient.setIngredient(databaseIngredient.get());
-        } else throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Ingredients not found");
+        Ingredient requestedIngredient = mealIngredient.getIngredient();
+        Long requestedIngredientId = requestedIngredient.getId();
+        Optional<Ingredient> existingIngredient = ingredientRepository.findById(requestedIngredientId);
+        if (existingIngredient.isPresent()) {
+            mealIngredient.setIngredient(existingIngredient.get());
+        } else throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Ingredient not found");
         return mealIngredientRepository.save(mealIngredient);
     }
 
